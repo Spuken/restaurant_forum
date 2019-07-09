@@ -13,6 +13,7 @@
                     <li><strong>Address:</strong> <%= @restaurant.address %></li>
                 </ul>
             </div>
+            <%= link_to 'Back to index', admin_restaurants_path %>
         </div>
         <div class="col-md-8">
             <%= simple_format @restaurant.description %>
