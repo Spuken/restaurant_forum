@@ -1,13 +1,4 @@
 class ApplicationController < ActionController::Base
-
-
-    private
-
-    def authenticate_admin
-        unless current_user.admin?
-            flash[:alert] = "Not Admin!"
-            redirect_to root_path        
-        end
-    end    
-
+   #protetc_from_forgery with: :exception
+   before_action :authenticate_user!
 end
