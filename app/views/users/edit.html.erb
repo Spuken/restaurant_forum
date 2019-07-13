@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <h1>Edit Profile</h1>
+        <% if @user_checked.errors.any? %>
+        <h4>We have some errors here !</h4>
+        <ul>
+            <% @user_checked.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        <hr>
+        <% end %>
+        
+        <%= form_for @user_checked, url:{action: 'update'} do |f| %>
+            <div class="form-group">
+                <%= f.label :name, "Name" %>
+                <%= f.text_field :name, class: "form-control" %>
+            </div>        
+            <div class="form-group">
+                <%= f.label :description, "自我介紹" %>
+                <%= f.text_area :description, class: "form-control" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :avatar, "大頭照上傳" %>
+                <%= image_tag @user_checked.avatar.url, width: '300px' if @user_checked.avatar? %>
+                <%= f.file_field :avatar %>
+            </div>        
+            <div class="form-group">
+                <%= f.submit "Update", class: "btn btn-primary" %>
+                <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+            </div>
+        <% end %>
+    </div>
+</div>

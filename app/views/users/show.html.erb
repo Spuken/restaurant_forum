@@ -1,2 +1,23 @@
-<h1>user profile</h1>
-<h1><%= @user_now.email %> </h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <% if @user_checked.avatar? %>
+                <%= image_tag @user_checked.avatar.url, class: "img-responsive center-block" %>  
+            <% else %>
+                <%= image_tag 'default.png', class: "img-responsive center-block" %>  
+            <% end %>
+            
+        </div>
+        <div class="col-md-8">            
+            <ul class="list-unstyled">
+                <li><h1><%= @user_checked.name %></h1></li>
+                <li><h5><%= @user_checked.email %></h5></li>
+                <li><h5><%= @user_checked.description %></h5></li>
+            </ul>
+            <% if current_user == @user_checked %>
+                <%= link_to "Edit profile", sp_edit_users_path(@user_checked.id), class: "btn btn-primary" %>
+            <% end %>            
+            
+        </div>
+    </div>
+</div>
