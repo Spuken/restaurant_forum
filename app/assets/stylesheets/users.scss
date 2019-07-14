@@ -1,3 +1,21 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.my-restaurant {
+    display: inline-block;
+    text-align: center;
+    padding: 7px 7px 0 7px;
+  }
+  
+  .my-restaurant > div {
+    height: 60px;
+  }
+  
+  .my-restaurant img {
+    max-height: 100%;
+  }
+  
+  .panel a:hover .my-restaurant {
+    background-color: #eee;
+  }

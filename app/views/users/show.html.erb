@@ -8,7 +8,7 @@
             <% end %>
             
         </div>
-        <div class="col-md-8">            
+        <div class="col-md-8">
             <ul class="list-unstyled">
                 <li><h1><%= @user_checked.name %></h1></li>
                 <li><h5><%= @user_checked.email %></h5></li>
@@ -20,4 +20,22 @@
             
         </div>
     </div>
+    <br>
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> <%= @commented_restaurants.uniq.count %>已評論餐廳</h3>
+            </div>
+            <div class="panel-body">
+                    <% @commented_restaurants.uniq.each do |com_res| %>
+                    <div class="my-restaurant">
+                        <%= image_tag com_res.image.url, class: "img-responsive center-block" %>
+                        <%= link_to com_res.name, restaurant_path(com_res.id)%>
+                    </div>
+                    <% end %>
+            </div>
+        </div>            
+    </div>
+    
 </div>

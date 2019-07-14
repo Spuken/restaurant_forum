@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     def show
         set_user
+        @commented_restaurants = @user_checked.restaurants
     end
 
     def edit
