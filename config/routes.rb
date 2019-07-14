@@ -20,9 +20,11 @@ Rails.application.routes.draw do
       get :feeds
     end
 
-    # restaurants/:id/feeds
+    # restaurants/:id/dashboard
     member do
       get :dashboard
+      post :favorite
+      post :unfavorite
     end
   end
 
