@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         if (current_user == @user_for_update)
             if @user_for_update.update(user_params)
                 flash[:notice] = "Updating user content success"
-                redirect_to sp_user_path(@user_for_update.id)
+                redirect_to user_path(@user_for_update.id)
             else
                 flash.now[:alert] = "User content was failed to update"
                 render :edit
@@ -32,4 +32,9 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:name, :description, :avatar)
     end
+
+    def index
+        @users = User.all
+    end
+    
 end

@@ -1,8 +1,8 @@
 namespace :dev do
     task fake: :environment do
-        #fake_category
-        #fake_user
-        #fake_restaurant
+        fake_category
+        fake_user
+        fake_restaurant
         fake_comment
     end   
     
@@ -49,13 +49,20 @@ namespace :dev do
     def fake_user
         User.destroy_all
 
-        User.create(email: "root@root.com", password: "123456", role: "admin")
-        User.create(email: "aaa@aaa.com", password: "123456")
+        User.create(email: "root@root.com", password: "123456", role: "admin", name: "Spuken")
+        User.create(email: "aaa@aaa.com", password: "123456", name: "aaa")
 
         puts "Default admin user created!"
 
         18.times do |i|
-            User.create(email: FFaker::Internet.email, password: "123456")
+            User.create(email: FFaker::Internet.email, password: "123456", name: FFaker::Name.first_name )
+        end
+
+        path = File.join(Rails.root, "app", "assets", "images", "default_avatar.png")
+
+        User.all.each do |u|
+            u.avatar = Pathname.new(path).open
+            u.save!
         end
 
         puts "User seeds created!"

@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   
   #user
-  get 'users/:id' => 'users#show' , as: 'sp_user'
-  get 'users/:id/edit' => 'users#edit',  as: 'sp_edit_users'
+  #get 'users/:id' => 'users#show' , as: 'sp_user'
+  #get 'users/:id/edit' => 'users#edit',  as: 'sp_edit_users'
   put 'users/:id' => 'users#update'
   patch 'users/:id' => 'users#update'
   
   devise_for :users
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show, :edit]
 
-  resources :folowships, only: [:create, :destroy]
+  resources :followships, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "restaurants#index"

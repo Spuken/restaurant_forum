@@ -15,7 +15,7 @@
                 <li><h5><%= @user_checked.description %></h5></li>
             </ul>
             <% if current_user == @user_checked %>
-                <%= link_to "Edit profile", sp_edit_users_path(@user_checked.id), class: "btn btn-primary" %>
+                <%= link_to "Edit profile", edit_user_path(@user_checked.id), class: "btn btn-primary" %>
             <% end %>            
             
         </div>
