@@ -10,7 +10,7 @@ namespace :dev do
     def fake_restaurant
         Restaurant.destroy_all
 
-        image_path = File.join(Rails.root, "app", "assets", "images")        
+        image_path = File.join(Rails.root, "public", "images")        
         Find.find(image_path) do |path|            
             if File.basename(path, ".png") =~ /default_image.*/
                 image_path = path            
@@ -67,7 +67,7 @@ namespace :dev do
         end
 
 
-        avatar_path = File.join(Rails.root, "app", "assets", "images")        
+        avatar_path = File.join(Rails.root, "public", "images")        
         Find.find(avatar_path) do |path|            
             if File.basename(path, ".png") =~ /default_avatar.*/
                 avatar_path = path            
