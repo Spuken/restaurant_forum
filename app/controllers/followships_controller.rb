@@ -18,4 +18,5 @@ class FollowshipsController < ApplicationController
         flash[:alert] = "Followship destroyed"
         redirect_back(fallback_location: root_path)
     end
+    
 end
