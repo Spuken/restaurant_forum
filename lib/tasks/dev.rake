@@ -1,3 +1,4 @@
+require 'find'
 namespace :dev do
     task fake: :environment do
         fake_category
