@@ -9,6 +9,13 @@ namespace :dev do
     def fake_restaurant
         Restaurant.destroy_all
 
+        image_path = File.join(Rails.root, "app", "assets", "images")        
+        Find.find(image_path) do |path|            
+            if File.basename(path, ".png") =~ /default_image.*/
+                image_path = path            
+            end
+        end
+
         50.times do |i|
             Restaurant.create!(name: FFaker::Name.first_name,
                 opening_hours: FFaker::Time.datetime,
@@ -17,7 +24,7 @@ namespace :dev do
                 description: FFaker::Lorem.paragraph,
                 category: Category.all.sample,
                 #category_id: Category.all.sample.id (跟上面那行一樣意思)        
-                image: Pathname.new(Rails.root.join("app/assets/images/default.png")).open
+                image: Pathname.new(image_path).open
                 )                
         end
 
@@ -58,10 +65,16 @@ namespace :dev do
             User.create(email: FFaker::Internet.email, password: "123456", name: FFaker::Name.first_name )
         end
 
-        path = File.join(Rails.root, "app", "assets", "images", "default_avatar.png")
+
+        avatar_path = File.join(Rails.root, "app", "assets", "images")        
+        Find.find(avatar_path) do |path|            
+            if File.basename(path, ".png") =~ /default_avatar.*/
+                avatar_path = path            
+            end
+        end
 
         User.all.each do |u|
-            u.avatar = Pathname.new(path).open
+            u.avatar = Pathname.new(avatar_path).open
             u.save!
         end
 
