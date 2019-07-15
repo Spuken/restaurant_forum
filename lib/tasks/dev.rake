@@ -17,7 +17,7 @@ namespace :dev do
                 description: FFaker::Lorem.paragraph,
                 category: Category.all.sample,
                 #category_id: Category.all.sample.id (跟上面那行一樣意思)        
-                image: Pathname.new(Rails.root.join("public/uploads/restaurant/image/default/default.png")).open
+                image: Pathname.new(Rails.root.join("app/assets/images/default.png")).open
                 )                
         end
 
