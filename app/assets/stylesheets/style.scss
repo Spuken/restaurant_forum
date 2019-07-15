@@ -2,8 +2,7 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 4px;
-    margin-bottom: 20px;    
-    min-height: 35vw;    
+    margin-bottom: 20px;
   }
   
   .restaurant-item img {
@@ -13,6 +12,13 @@
   
   .restaurant-item .caption {
     padding: 10px;
+  }
+
+  .restaurant-item p {    
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .nav-pills-center {

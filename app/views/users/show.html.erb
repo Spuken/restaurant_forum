@@ -22,7 +22,49 @@
     </div>
     <br>
 
-    <div class="col-md-12">
+    <div class="col-md-4">
+        <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th> <%= @user_checked.followings.count %> followings</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @user_checked.followings.each do |uf| %>
+                <tr>
+                    <td scope="row">
+                        <%= image_tag uf.avatar.url, class: "img-thumbnail img-follow" %>
+                        <%= link_to('Profile', user_path(uf.id)) %>
+                    </td>                            
+                </tr>
+                <% end %>
+                </tbody>
+        </table>
+
+        <br>
+
+        <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th> <%= @user_checked.followers.count %> followers</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @user_checked.followers.each do |uf| %>
+                <tr>
+                    <td scope="row">
+                        <%= image_tag uf.avatar.url, class: "img-thumbnail img-follow" %>
+                        <%= link_to('Profile', user_path(uf.id)) %>
+                    </td>                            
+                </tr>
+                <% end %>
+                </tbody>
+        </table>
+
+
+    </div>
+
+    <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"> <%= @commented_restaurants.uniq.count %>已評論餐廳</h3>
