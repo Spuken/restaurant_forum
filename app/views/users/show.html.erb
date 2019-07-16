@@ -38,7 +38,7 @@
                         <% else %>
                             <%= image_tag 'default_avatar.png', class: "img-thumbnail img-follow" %>  
                         <% end %>                        
-                        <%= link_to('Profile', user_path(uf.id)) %>
+                        <%= link_to(uf.name, user_path(uf.id)) %>
                     </td>                            
                 </tr>
                 <% end %>
@@ -63,7 +63,7 @@
                             <%= image_tag "default_avatar.png", class: "img-thumbnail img-follow" %>
                         <% end %>
                         
-                        <%= link_to('Profile', user_path(uf.id)) %>
+                        <%= link_to(uf.name, user_path(uf.id)) %>
                     </td>                            
                 </tr>
                 <% end %>
