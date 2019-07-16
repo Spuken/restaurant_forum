@@ -4,7 +4,7 @@
             <% if @user_checked.avatar? %>
                 <%= image_tag @user_checked.avatar.url, class: "img-responsive center-block" %>  
             <% else %>
-                <%= image_tag 'default.png', class: "img-responsive center-block" %>  
+                <%= image_tag 'default_avatar.png', class: "img-responsive center-block" %>  
             <% end %>
             
         </div>
@@ -33,7 +33,11 @@
                 <% @user_checked.followings.each do |uf| %>
                 <tr>
                     <td scope="row">
-                        <%= image_tag uf.avatar.url, class: "img-thumbnail img-follow" %>
+                        <% if uf.avatar? %>
+                            <%= image_tag uf.avatar.url, class: "img-thumbnail img-follow" %>  
+                        <% else %>
+                            <%= image_tag 'default_avatar.png', class: "img-thumbnail img-follow" %>  
+                        <% end %>                        
                         <%= link_to('Profile', user_path(uf.id)) %>
                     </td>                            
                 </tr>
@@ -53,7 +57,12 @@
                 <% @user_checked.followers.each do |uf| %>
                 <tr>
                     <td scope="row">
-                        <%= image_tag uf.avatar.url, class: "img-thumbnail img-follow" %>
+                        <% if uf.avatar? %>
+                            <%= image_tag uf.avatar.url, class: "img-thumbnail img-follow" %>  
+                        <% else %>
+                            <%= image_tag "default_avatar.png", class: "img-thumbnail img-follow" %>
+                        <% end %>
+                        
                         <%= link_to('Profile', user_path(uf.id)) %>
                     </td>                            
                 </tr>
@@ -72,7 +81,12 @@
             <div class="panel-body">
                     <% @commented_restaurants.uniq.each do |com_res| %>
                     <div class="my-restaurant">
-                        <%= image_tag com_res.image.url, class: "img-responsive center-block" %>
+                        <% if com_res.image? %>
+                            <%= image_tag com_res.image.url, class: "img-responsive center-block" %>  
+                        <% else %>
+                            <%= image_tag "default_image.png", class: "img-responsive center-block" %>
+                        <% end %>
+                        
                         <%= link_to com_res.name, restaurant_path(com_res.id)%>
                     </div>
                     <% end %>

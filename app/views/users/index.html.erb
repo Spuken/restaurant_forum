@@ -28,7 +28,11 @@
 
             <%= link_to user_path(user) do %>
             <!-- 可先利用 Placeholder 如 <img src="http://via.placeholder.com/128x128"> 產生圖片 -->
-            <%= image_tag(user.avatar.url, class: "img-rounded img-responsive") %>
+                <% if user.avatar? %>
+                    <%= image_tag(user.avatar.url, class: "img-rounded img-responsive") %>  
+                <% else %>
+                    <%= image_tag("default_avatar.png", class: "img-rounded img-responsive") %>
+                <% end %>            
             <h4><%= user.name %></h4>
             <% end %>
 
