@@ -5,7 +5,11 @@
             <h5><%= @restaurant.category.name %></h5>
         </div>
         <div class="col-md-4">
-            <%= image_tag @restaurant.image.url, class: "img-responsive center-block" %>
+            <% if @restaurant.image? %>
+                <%= image_tag @restaurant.image.url, class: "img-responsive center-block" %>  
+            <% else %>
+                <%= image_tag "default_image.png", class: "img-responsive center-block" %>
+            <% end %>            
             <br>
             <div class="well">
                 <ul class="list-unstyled">
